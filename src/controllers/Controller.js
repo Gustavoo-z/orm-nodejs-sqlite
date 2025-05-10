@@ -7,8 +7,8 @@ class Controller {
       const listaDeRegistros =
         await this.entidadeService.selecionaTodosRegistros();
       return res.status(200).json(listaDeRegistros);
-    } catch (error) {
-      return res.status(500).json({ error: error.message });
+    } catch (erro) {
+      return res.status(500).json({ erro: erro.message });
     }
   }
 
@@ -19,7 +19,9 @@ class Controller {
         Number(id),
       );
       return res.status(200).json(umRegistro);
-    } catch (erro) {}
+    } catch (erro) {
+      return res.status(500).json({ erro: erro.message });
+    }
   }
 
   async criaNovo(req, res) {
@@ -28,7 +30,9 @@ class Controller {
       const novoRegistroCriado =
         await this.entidadeService.criaRegistro(dadosParaCriacao);
       return res.status(200).json(novoRegistroCriado);
-    } catch (erro) {}
+    } catch (erro) {
+      return res.status(500).json({ erro: erro.message });
+    }
   }
 
   async atualiza(req, res) {
@@ -45,7 +49,9 @@ class Controller {
           .json({ mensagem: 'registro não foi atualizado' });
       }
       return res.status(200).json({ mensagem: 'Atualizado com sucesso' });
-    } catch (erro) {}
+    } catch (erro) {
+      return res.status(500).json({ erro: erro.message });
+    }
   }
 
   async exclui(req, res) {
@@ -53,8 +59,8 @@ class Controller {
     try {
       await this.entidadeService.excluiRegistro(Number(id));
       return res.status(200).json({ mensagem: `id ${id} deletado` });
-    } catch (error) {
-      return res.status(500).json(error.message);
+    } catch (erro) {
+      return res.status(500).json({ erro: erro.message });
     }
   }
 }
