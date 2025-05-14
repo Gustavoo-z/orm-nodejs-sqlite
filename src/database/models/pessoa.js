@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
           len: {
             args: [3, 30],
             msg: 'O nome deve ter entre 3 e 30 caracteres',
-          }
+          },
         },
       },
       email: {
