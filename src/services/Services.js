@@ -4,8 +4,8 @@ class Services {
   constructor(nomeDoModel) {
     this.model = nomeDoModel;
   }
-  async selecionaTodosRegistros() {
-    return dataSource[this.model].findAll();
+  async selecionaTodosRegistros(where = {}) {
+    return dataSource[this.model].findAll({ where: { ...where } });
   }
 
   async pegaRegistrosPorEscopo(escopo) {
