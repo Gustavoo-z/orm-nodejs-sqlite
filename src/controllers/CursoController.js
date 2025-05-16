@@ -15,9 +15,9 @@ class CursoController extends Controller {
     console.log(req.query);
     const where = {};
 
-    data_inicial || data_final ? where.data_inicio = {} : null;
-    data_inicial ? where.data_inicio[Op.gte] = data_inicial : null;
-    data_final ? where.data_inicio[Op.lte] = data_final : null;
+    data_inicial || data_final ? (where.data_inicio = {}) : null;
+    data_inicial ? (where.data_inicio[Op.gte] = data_inicial) : null;
+    data_final ? (where.data_inicio[Op.lte] = data_final) : null;
     console.log(data_inicial, data_final);
     console.log(where);
     try {
